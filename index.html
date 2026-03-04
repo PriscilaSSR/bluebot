@@ -51,15 +51,27 @@ Enter your own credits or author's statement here.
         }
     }
      /* Modify this code to shape the text size, color and alignment, text container border, and background color. */   
-    #text-container {
+#text-container {
         text-align: left;
-        font-size: 3em; 
-		color: black; 
+        font-size: 1.8em; /* Reduced from 3em to fit the image comfortably */
+        color: black; 
         margin: auto; 
-        border: 0px solid black; /* Change 0px to your desired border thickness, if desired. You can also change the color. */
+        border: 0px solid black; 
         padding: 10px;
-        max-width: 90%; /* The text container will adapt to the line length up to 90% of window's width */
-		background-color: transparent;
+        max-width: 90%; 
+        background-color: transparent;
+        text-align: center; /* Centers the text and the image */
+    }
+
+    /* New CSS for the generated images */
+    .game-img {
+        max-width: 100%;
+        height: auto;
+        max-height: 40vh; /* Keeps the image from taking over the whole screen */
+        border-radius: 12px; /* Soft, rounded corners */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Fancy drop shadow */
+        margin-top: 30px;
+        border: 3px solid #222; /* Dark border like a screenshot frame */
     }
 
     /* CSS for buttons and modal */
@@ -126,7 +138,14 @@ Enter your own credits or author's statement here.
 <!-- The script below is your primary writing space, where you get to design the sentence templates, variables, and datasets. The sentence templates are in "origin" and you can modify them as you see fit, following the following logics derived from Tracery: variables are held between hastags (#) in the dataset, and they are defined below between quotation marks. Items in the dataset are inside quotation marks and separated by commas. You can rename any and all variables and add as many as you like, but keep the top one as "origin". All the datasets can be modified. Be sure to define the datasets for all variables. If you wish to add line breaks, insert the code <br> within the sentence template, you need to do it later in the script.-->
 		<script>
     var obj = {
-"origin":["Imagine #real_game#, but it's about #profound_theme# while the core gameplay loop is #mechanic#. Reminds me of #real_world_parallel#"],
+"origin":["Imagine <strong>#real_game#</strong>, but it's about <em>#profound_theme#</em> while the core gameplay loop is #mechanic#. Reminds me of #real_world_parallel# <br><br> <img src='#screenshot#' class='game-img'>"],
+        
+        "screenshot": [
+            "s1.jpg", 
+            "s2.jpg", 
+            "s3.jpg", 
+            "s4.jpg"
+        ],
 "real_game":["Tetris", "Bioshock", "Baldur's Gate 3", "Mario Kart", "Monopoly", "The Sims", "DOOM", "Bejeweled", "Pong", "Call of Duty", "Resident Evil", "Pokemon", "Fallout"],
 "profound_theme":["the bittersweet passage of time", "the philosophical flaws of Ayn Rand's Objectivism", "the realities of systemic racism and xenophobia", "the precarious position of war refugees", "the tragedy of mass death", "grieving a lost family member", "greed and its consequences", "the dangers of nuclear war"],
 "mechanic":["sprinting around finding cover and chaining headshots", "matching three identical objects on a grid", "rolling a die to determine outcomes", "filling percentage meters", "matching color blocks to clear lines", "clicking highlighted images", "accumulating digital coins", "racing toward a finish line", "collecting bachelorettes", "looting dead bodies", "drafting a deck of synergistic cards with randomized multipliers", "wandering around a retro 2D pixel maze collecting keys", "punching trees to craft wooden pickaxes", "grinding low-level enemies to unlock a skill tree", "completing repetitive fetch quests for different-colored items", "managing limited inventory space and combining random items", "capturing wild monsters and forcing them to fight"],
