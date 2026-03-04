@@ -27,57 +27,95 @@ Enter your own credits or author's statement here.
         align-items: center;
         justify-content: flex-start;
         height: 100vh;
-        font-family: Arial, sans-serif; /* Change to preferred font. */
+        /* A monospace font gives it a raw, 'exposed code' terminal vibe */
+        font-family: 'Courier New', Courier, monospace; 
         margin: 0;
         padding: 0;
-        background-color: white; /* Change to preferred color. */
+        background-color: #0d0d12; /* Deep, almost black tech-void background */
+        color: #e0e0e0;
     }
     
     #title-container {
         width: 100%;
         text-align: center; 
-		color: black; 
-        max-height: 300px;
-		font-size: 4em; /* Change to preferred size. */
+        color: #ff0055; /* Harsh alert pink */
+        max-height: 200px;
+        font-size: 3.5em; 
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        padding-top: 20px;
+        text-shadow: 3px 3px 0px #00ffff; /* Glitchy cyan offset shadow */
     }
     
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         #title-container {
-            max-height: 200px;
+            font-size: 2em;
+            padding-top: 10px;
         }
-        
         #text-container {
-            width: 100%;
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .pitch-text {
+            text-align: center;
+        }
+        .game-img {
+            max-width: 90%;
         }
     }
-     /* Modify this code to shape the text size, color and alignment, text container border, and background color. */   
-#text-container {
-        text-align: left;
-        font-size: 1.8em; /* Reduced from 3em to fit the image comfortably */
-        color: black; 
-        margin: auto; 
-        border: 0px solid black; 
-        padding: 10px;
-        max-width: 90%; 
-        background-color: transparent;
-        text-align: center; /* Centers the text and the image */
+    
+    #text-container {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: center;
+        gap: 40px; 
+        font-size: 1.6em; 
+        color: #00ff41; /* Classic terminal green for the generated text */
+        margin: 40px auto; 
+        padding: 40px;
+        max-width: 85%; 
+        background-color: #15151a; /* Slightly lighter than body for a panel effect */
+        border: 2px solid #333;
+        border-radius: 0px; /* Sharp corners */
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); /* Subtle radioactive glow */
     }
 
-    /* New CSS for the generated images */
+    .pitch-text {
+        flex: 1; 
+        text-align: left;
+        line-height: 1.5;
+    }
+    
+    /* Target the bold and italic tags in your Tracery code to color-code them */
+    .pitch-text strong {
+        color: #00ffff; /* Cyan for the game name */
+        background-color: rgba(0, 255, 255, 0.1);
+        padding: 0 4px;
+    }
+    
+    .pitch-text em {
+        color: #ff0055; /* Pink for the theme */
+        font-style: normal;
+        text-decoration: underline;
+    }
+
     .game-img {
-        max-width: 100%;
+        flex: 1; 
+        max-width: 45%;
         height: auto;
-        max-height: 40vh; /* Keeps the image from taking over the whole screen */
-        border-radius: 12px; /* Soft, rounded corners */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Fancy drop shadow */
-        margin-top: 30px;
-        border: 3px solid #222; /* Dark border like a screenshot frame */
+        border-radius: 0px; 
+        box-shadow: 8px 8px 0px #ff0055; /* Brutalist block shadow */
+        border: 2px solid #e0e0e0; 
+        filter: grayscale(20%) contrast(120%); /* Makes images look a bit harsher */
     }
 
     /* CSS for buttons and modal */
     #button-container {
         position: fixed;
-        bottom: 10px;
+        bottom: 30px;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
@@ -86,37 +124,67 @@ Enter your own credits or author's statement here.
     
     .button {
         margin: 10px;
-        font-size: 2em;
+        font-size: 1.5em;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        color: #0d0d12;
+        background-color: #00ff41;
+        border: none;
+        padding: 12px 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        box-shadow: 6px 6px 0px #00ffff; /* Offset cyan shadow */
+        transition: all 0.1s ease;
     }
-	
+    
+    .button:hover {
+        transform: translate(3px, 3px); /* Physically pushes the button down */
+        box-shadow: 3px 3px 0px #00ffff; 
+    }
+
+    .button:active {
+        transform: translate(6px, 6px);
+        box-shadow: 0px 0px 0px #00ffff;
+    }
+    
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        display: none; 
+        position: fixed; 
+        z-index: 10; 
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(13, 13, 18, 0.9); /* Dark semi-transparent background */
+        backdrop-filter: blur(5px);
     }
 
     .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-        font-size: 2.5em;
+        background-color: #15151a;
+        color: #e0e0e0;
+        margin: 10% auto; 
+        padding: 30px;
+        border: 2px solid #00ff41;
+        box-shadow: 10px 10px 0px #ff0055;
+        width: 70%; 
+        font-size: 1.5em;
+        line-height: 1.6;
     }
 
-    /* The Close Button */
     .close {
-        color: #aaa;
+        color: #00ffff;
         float: right;
-        font-size: 28px;
+        font-size: 40px;
         font-weight: bold;
+        transition: color 0.2s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ff0055;
+        text-decoration: none;
+        cursor: pointer;
     }
 </style>
     </head>
